@@ -9,7 +9,7 @@ curl -X POST -i 'http://localhost:3000/api/commits/import?owner=ВЛАДАЛЕЦ
 ```
 Либо можно воспользоваться любым удобным для вас REST клиентом(например restman). 
 
-##Пример рабочего запроса:
+## Пример рабочего запроса:
 ```
 curl -X POST -i 'http://localhost:3000/api/commits/import?owner=legatus88&repo=kino&author_email=y1wkn8@gmail.com'
 ```
