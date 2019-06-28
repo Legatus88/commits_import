@@ -1,24 +1,27 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**commits_import** это простое API приложение, которое делает импорт всех коммитов определённого автора с github.com в базу данных. Пользователь самостоятельно вводит :owner, :repo, :author_email и инициирует импорт.
 
-Things you may want to cover:
+После запуска сервера пишем в консоли: 
 
-* Ruby version
+```
+curl -X POST -i 'http://localhost:3000/api/commits/import?owner=ВЛАДАЛЕЦ_РЕПОЗИТОРИЯ&repo=НАЗВАНИЕ_РЕПОЗИТОРИЯ&author_email=ПОЧТА_АВТОРА_КОММИТА'
+```
+Либо можно воспользоваться любым удобным для вас REST клиентом(например restman). 
 
-* System dependencies
+##Пример рабочего запроса:
+```
+curl -X POST -i 'http://localhost:3000/api/commits/import?owner=legatus88&repo=kino&author_email=y1wkn8@gmail.com'
+```
+Как вы можете увидеть выше, инициализация коммита происходит через пост запрос с определёнными параметрами.
+Вы должны ввести: 
 
-* Configuration
+* owner: владельца репозитория
+* repo:  название репозитория
+* author_email: почта автора коммита
 
-* Database creation
+Все эти параметры ***ОБЯЗАТЕЛЬНЫ*** к заполнению, в противном случае ответ будет ошибкой.
 
-* Database initialization
+Каждая инициализация импорта происходит с перезаписью всей БД.
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+В приложение реализована пагинация(сортировка по дате коммита).
